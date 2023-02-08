@@ -59,15 +59,18 @@ public class MoveWords{
     	return -1;
     }
 
-    public static int checkWinner(String first, String second){
-	    int first_i, second_i;
-
-	    first_i = getIndex(first);
-	    second_i = getIndex(second);
-
-	    if (first_i == second_i) return EMPATE;
-	    
-	    return (( (first_i +1) % validMoves.length ) == second_i ) ? GANA: PIERDE;
+	public static int checkWinner(String player, String computer) {
+		if (player.equals(computer)) {
+			return EMPATE;
+		} else if ((player.equals("TIJERAS") && (computer.equals("PAPEL") || computer.equals("LAGARTIJA"))) ||
+				(player.equals("PAPEL") && (computer.equals("PIEDRA") || computer.equals("SPOCK"))) ||
+				(player.equals("PIEDRA") && (computer.equals("TIJERAS") || computer.equals("LAGARTIJA"))) ||
+				(player.equals("LAGARTIJA") && (computer.equals("PAPEL") || computer.equals("SPOCK"))) ||
+				(player.equals("SPOCK") && (computer.equals("PIEDRA") || computer.equals("TIJERAS")))) {
+			return GANA;
+		} else {
+			return PIERDE;
+		}
 	}
 	
 } 
